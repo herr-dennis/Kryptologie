@@ -6,8 +6,9 @@ module com.example.kryptologie {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.kryptologie to javafx.fxml;
-    exports com.example.kryptologie;
-    exports controll;
     opens controll to javafx.fxml;
+    opens model to javafx.fxml;
+    exports controll;
+    exports model;
+
 }

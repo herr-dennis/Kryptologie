@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<VBox alignment="CENTER" prefHeight="433.0" prefWidth="636.0" spacing="20.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controll.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <TextArea editable="false" prefHeight="190.0" prefWidth="596.0" text="Erklärung: Ggt (a,b)  &#10;                a     q  * b  +  r&#10;               64 = 1 * 45 + 19&#10;               45 = 2 * 19 + 7&#10;               19 = 2 * 7 + 6&#10;               7  = 1 * 6 + 1&#10;               6  = 6 * 1 + 0 &lt;---">
+      <font>
+         <Font name="Cambria Bold" size="13.0" />
+      </font>
+   </TextArea>
+   <Separator prefWidth="200.0" />
 
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+    <Label fx:id="welcomeText" />
+   <Label fx:id="warningLabel" prefHeight="17.0" prefWidth="603.0" text="Alles in Ordnung!" />
+   <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <bottom>
+         <Button fx:id="calcButton" mnemonicParsing="false" onAction="#onCalcButtonClicked" text="Finde den GGT!" BorderPane.alignment="CENTER" />
+      </bottom>
+      <top>
+         <HBox prefHeight="31.0" prefWidth="596.0" BorderPane.alignment="CENTER">
+            <children>
+               <TextField fx:id="inputA" onMouseClicked="#clearInputA" text="Hier 'a' eingeben" />
+               <Separator orientation="VERTICAL" prefHeight="200.0" />
+               <TextField fx:id="inputB" onMouseClicked="#clearInputB" text="Hier 'b' eingeben" />
+               <Label fx:id="resultLabel" contentDisplay="CENTER" prefHeight="25.0" prefWidth="151.0" text="GGT" underline="true">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Label>
+            </children>
+         </HBox>
+      </top>
+   </BorderPane>
+</VBox>
