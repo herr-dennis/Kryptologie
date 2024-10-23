@@ -20,5 +20,7 @@ public class Main extends Application {
         launch();
         EuklidAlgo a = new EuklidAlgo(65,24);
         System.out.println( "Der GGT ist : "+ a.calcGgt());
+        MathsThings m = new MathsThings();
+
     }
 }
