@@ -5,8 +5,8 @@ import java.math.BigInteger;
 public class EuklidAlgo {
     protected int a;
     protected int b;
-    private BigInteger bigA;
-    private BigInteger bigB;
+    protected BigInteger bigA;
+    protected BigInteger bigB;
     private int steps =0;
     // Konstruktor für int-Werte
     public EuklidAlgo(int a, int b) {

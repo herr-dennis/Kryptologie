@@ -90,24 +90,75 @@ public class Controller {
     protected void onSolveButtonClicked() {
 
         // c*y + m*y = d
-        int c = getInputC();
-        int m = getInputM();
-        int d = getInputD();
+        String cString = getInputC();
+        String mString = getInputM();
+        String dString = getInputD();
 
-        EuklidAlgoErweiterter euklidAlgoErweiterter = new EuklidAlgoErweiterter(c,m);
-        try {
-            int[] results = euklidAlgoErweiterter.calculateEuklidAlgoErweiterter(d);
-            int resultX = results[1];
-            int resultY = results[2];
-            setResultD(Integer.toString(d));
-            setResultX(Integer.toString(resultX));
-            setResultY(Integer.toString(resultY));
+        boolean isBigNumber = false;
 
-        } catch (Exception e) {
-            setResultD("Keine Lösung");
-            setResultX("Keine Lösung");
-            setResultY("Keine Lösung");
+        BigInteger cBig = null;
+        BigInteger mBig = null;
+        BigInteger dBig = null;
+        int c =0;
+        int m=0;
+        int d=0;
+         MathsThings mathsThings = new MathsThings();
+
+        //Prüft ob a_string und b_string bigInt sind
+        if (proofExp(cString) && proofExp(mString)&&proofExp(dString)) {
+            cBig = mathsThings.expStringToBigInt(cString);
+            mBig  = mathsThings.expStringToBigInt(mString);
+            dBig = mathsThings.expStringToBigInt(dString);
+
+            isBigNumber = true;
+
+            //Ganze normale Integer
+        } else {
+            c = mathsThings.stringToInteger(cString);
+            m = mathsThings.stringToInteger(mString);
+            d = mathsThings.stringToInteger(cString);
+            isBigNumber = false;
+
         }
+
+        if(isBigNumber){
+            EuklidAlgoErweiterter euklidAlgoErweiterter = new EuklidAlgoErweiterter(cBig,mBig);
+            try {
+                System.out.println("BECHRENERNENR");
+                BigInteger[] results = euklidAlgoErweiterter.calculateEuklidAlgoErweiterter(dBig);
+                BigInteger resultX = results[1];
+                BigInteger resultY = results[2];
+
+                setResultD(dBig.toString());
+                setResultX(resultX.toString());
+                setResultY(resultY.toString());
+
+            } catch (Exception e) {
+                setResultD("Keine Lösung - BigInteger");
+                setResultX("Keine Lösung - BigInteger ");
+                setResultY("Keine Lösung - BigInteger ");
+            }
+        }else{
+
+            try {
+               EuklidAlgoErweiterter euklidAlgoErweiterter = new EuklidAlgoErweiterter(m,d);
+                int[] results = euklidAlgoErweiterter.calculateEuklidAlgoErweiterter(d);
+                int resultX = results[1];
+                int resultY = results[2];
+                setResultD(Integer.toString(d));
+                setResultX(Integer.toString(resultX));
+                setResultY(Integer.toString(resultY));
+
+            } catch (Exception e) {
+                setResultD("Keine Lösung");
+                setResultX("Keine Lösung");
+                setResultY("Keine Lösung");
+            }
+
+        }
+
+
+
 
 
     }
@@ -311,33 +362,33 @@ public class Controller {
 
     }
 
-    int getInputC(){
+    String getInputC(){
         try {
-            return Integer.parseInt(inputC.getText());
+            return  inputC.getText();
         }
         catch (NumberFormatException e) {
             setWarningLabel("Etwas ist schief gelaufen. Fehlercode 0x09");
-              return 1;
+              return "";
         }
     }
 
-    int getInputD(){
+    String getInputD(){
             try {
-                return Integer.parseInt(inputD.getText());
+                return  inputD.getText();
             }
             catch (NumberFormatException e) {
                     setWarningLabel("Etwas ist schief gelaufen. Fehlercode 0x0a");
-                    return 1;
+                    return "";
             }
     }
 
-    int getInputM(){
+    String getInputM(){
         try {
-            return Integer.parseInt(inputM.getText());
+            return  inputM.getText();
         }
         catch (NumberFormatException e) {
                 setWarningLabel("Etwas ist schief gelaufen. Fehlercode 0x0b");
-                return 1;
+                return "";
         }
     }
 
@@ -350,10 +401,6 @@ public class Controller {
     private  void setResultX(String result) {
         resultX.setText(result);
     }
-
-
-
-
 
 
 
