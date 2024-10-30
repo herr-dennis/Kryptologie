@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,35 +14,173 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <TextArea editable="false" prefHeight="190.0" prefWidth="596.0" text="Erklärung: Ggt (a,b)  &#10;                a     q  * b  +  r&#10;               64 = 1 * 45 + 19&#10;               45 = 2 * 19 + 7&#10;               19 = 2 * 7 + 6&#10;               7  = 1 * 6 + 1&#10;               6  = 6 * 1 + 0 &lt;---">
+   <Label alignment="CENTER" contentDisplay="CENTER" text="Euklidischer Algorithmus" textAlignment="CENTER" textFill="#bc0e0e">
       <font>
-         <Font name="Cambria Bold" size="13.0" />
+         <Font name="System Bold" size="15.0" />
       </font>
-   </TextArea>
-   <Separator prefWidth="200.0" />
-
-    <Label fx:id="welcomeText" />
-   <Label fx:id="warningLabel" prefHeight="17.0" prefWidth="603.0" text="Alles in Ordnung!" />
-   <BorderPane prefHeight="200.0" prefWidth="200.0">
+   </Label>
+   <Separator prefHeight="25.0" prefWidth="596.0" />
+   <Label alignment="CENTER" prefHeight="27.0" prefWidth="122.0" text="Bestimmung des GGT">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
+   <BorderPane prefHeight="113.0" prefWidth="596.0">
+      <top>
+         <Label fx:id="warningLabel" prefHeight="34.0" prefWidth="596.0" text="Alles in Ordnung!" BorderPane.alignment="CENTER" />
+      </top>
       <bottom>
          <Button fx:id="calcButton" mnemonicParsing="false" onAction="#onCalcButtonClicked" text="Finde den GGT!" BorderPane.alignment="CENTER" />
       </bottom>
-      <top>
+      <center>
          <HBox prefHeight="31.0" prefWidth="596.0" BorderPane.alignment="CENTER">
             <children>
-               <TextField fx:id="inputA" onMouseClicked="#clearInputA" text="Hier 'a' eingeben" />
-               <Separator orientation="VERTICAL" prefHeight="200.0" />
-               <TextField fx:id="inputB" onMouseClicked="#clearInputB" text="Hier 'b' eingeben" />
-               <Label fx:id="resultLabel" contentDisplay="CENTER" prefHeight="25.0" prefWidth="151.0" text="GGT" underline="true">
-                  <font>
-                     <Font name="System Bold" size="15.0" />
-                  </font>
+               <VBox prefHeight="92.0" prefWidth="305.0">
+                  <children>
+                     <TextField fx:id="inputA" onMouseClicked="#clearInputA" text="Hier 'a' eingeben" />
+                     <TextField fx:id="inputB" onMouseClicked="#clearInputB" text="Hier 'b' eingeben" />
+                     <Label fx:id="resultLabel" contentDisplay="CENTER" prefHeight="25.0" prefWidth="151.0" text="GGT" underline="true">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="stepsLabel" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="125.0" text="Durchläufe:">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets top="11.0" />
+                        </VBox.margin>
+                     </Label>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+      </center>
+      <left>
+         <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+      </left>
+      <right>
+         <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+      </right>
+   </BorderPane>
+   <Separator prefWidth="200.0" />
+   <Label text="Lösen der Gleichung c*x + m*y = d">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font>
+   </Label>
+   <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <left>
+         <Separator orientation="VERTICAL" prefHeight="92.0" prefWidth="12.0" BorderPane.alignment="CENTER" />
+      </left>
+      <center>
+         <HBox prefHeight="140.0" prefWidth="584.0" BorderPane.alignment="CENTER">
+            <children>
+               <VBox prefHeight="200.0" prefWidth="100.0">
+                  <children>
+                     <Label text="Gebe ein c ein: " />
+                     <TextField fx:id="inputC" prefHeight="25.0" prefWidth="137.0" />
+                     <Label text="Gebe ein m ein:" />
+                     <TextField fx:id="inputM" />
+                     <Label text="Gebe ein d ein:" />
+                     <TextField fx:id="inputD" />
+                  </children>
+               </VBox>
+               <VBox prefHeight="200.0" prefWidth="100.0">
+                  <children>
+                     <Label text=" x =">
+                        <VBox.margin>
+                           <Insets top="22.0" />
+                        </VBox.margin>
+                     </Label>
+                     <Label text="y =">
+                        <VBox.margin>
+                           <Insets top="22.0" />
+                        </VBox.margin>
+                     </Label>
+                     <Label text="d =">
+                        <VBox.margin>
+                           <Insets top="22.0" />
+                        </VBox.margin>
+                     </Label>
+                  </children>
                   <HBox.margin>
-                     <Insets left="10.0" />
+                     <Insets left="22.0" />
+                  </HBox.margin>
+               </VBox>
+               <VBox prefHeight="200.0" prefWidth="100.0">
+                  <children>
+                     <Label fx:id="resultX">
+                        <VBox.margin>
+                           <Insets top="22.0" />
+                        </VBox.margin>
+                     </Label>
+                     <Label fx:id="resultY">
+                        <VBox.margin>
+                           <Insets top="22.0" />
+                        </VBox.margin>
+                     </Label>
+                     <Label fx:id="resultD">
+                        <VBox.margin>
+                           <Insets top="22.0" />
+                        </VBox.margin>
+                     </Label>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+      </center>
+      <bottom>
+         <Button fx:id="solveEqButton" mnemonicParsing="false" onAction="#onSolveButtonClicked" text="Löse die Gleichung!" BorderPane.alignment="CENTER" />
+      </bottom>
+   </BorderPane>
+   <Label text="Durschnittliche Operationen">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
+   <Separator prefWidth="200.0" />
+   <VBox prefHeight="200.0" prefWidth="100.0">
+      <children>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Label text="Gebe die Anzahl an:" />
+               <TextField fx:id="inputAnz" prefHeight="25.0" prefWidth="70.0">
+                  <HBox.margin>
+                     <Insets left="11.0" />
+                  </HBox.margin>
+               </TextField>
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Label text="Zufällige Zahl bis:    ">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+               </Label>
+               <TextField fx:id="inputN" prefHeight="25.0" prefWidth="70.0">
+                  <HBox.margin>
+                     <Insets left="11.0" />
+                  </HBox.margin>
+               </TextField>
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Label fx:id="resultAverLabel" text="Ergebnis">
+                  <HBox.margin>
+                     <Insets left="11.0" />
                   </HBox.margin>
                </Label>
             </children>
          </HBox>
-      </top>
-   </BorderPane>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Button fx:id="calculateAver" mnemonicParsing="false" onAction="#actionOnAverageCalcButtonClicked" text="Bilde den Durchschnitt" />
+            </children>
+         </HBox>
+      </children>
+   </VBox>
 </VBox>

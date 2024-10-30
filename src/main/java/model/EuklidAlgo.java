@@ -3,11 +3,11 @@ package model;
 import java.math.BigInteger;
 
 public class EuklidAlgo {
-    private int a;
-    private int b;
+    protected int a;
+    protected int b;
     private BigInteger bigA;
     private BigInteger bigB;
-
+    private int steps =0;
     // Konstruktor für int-Werte
     public EuklidAlgo(int a, int b) {
         this.a = Math.abs(a);
@@ -19,6 +19,7 @@ public class EuklidAlgo {
         this.bigA = bigA.abs();
         this.bigB = bigB.abs();
     }
+
 
     public int calcGgt() {
         if (a == 0) return b; // Sonderfall wenn a = 0
@@ -33,12 +34,12 @@ public class EuklidAlgo {
             r = a % b;
             a = b;
             b = r;
+            steps = steps + 1;
             if(r==0){
                 exit=true;
             }else{
                 ggt=r;
             }
-            System.out.println("Aktueller Rest: " + r);
         }
         return ggt; // GGT ist, wenn der Rest 0 ist
     }
@@ -57,6 +58,7 @@ public class EuklidAlgo {
             r = bigA.mod(bigB);
             bigA = bigB;
             bigB = r;
+            steps = steps + 1;
             if (r.equals(BigInteger.ZERO)) {
                 exit = true;
             } else {
@@ -64,6 +66,11 @@ public class EuklidAlgo {
             }
         }
         return ggt;
+    }
+
+
+    public int getSteps(){
+        return steps;
     }
 }
 
