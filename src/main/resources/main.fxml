@@ -146,7 +146,7 @@
          <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
                <Label text="Gebe die Anzahl an:" />
-               <TextField fx:id="inputAnz" prefHeight="25.0" prefWidth="70.0">
+               <TextField fx:id="inputAnz" prefHeight="25.0" prefWidth="110.0">
                   <HBox.margin>
                      <Insets left="11.0" />
                   </HBox.margin>
@@ -160,7 +160,7 @@
                      <Insets />
                   </HBox.margin>
                </Label>
-               <TextField fx:id="inputN" prefHeight="25.0" prefWidth="70.0">
+               <TextField fx:id="inputN" prefHeight="25.0" prefWidth="110.0">
                   <HBox.margin>
                      <Insets left="11.0" />
                   </HBox.margin>

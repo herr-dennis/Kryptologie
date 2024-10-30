@@ -7,6 +7,7 @@ import model.EuklidAlgo;
 import model.EuklidAlgoErweiterter;
 import model.MathsThings;
 import java.math.BigInteger;
+import java.text.DecimalFormat;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Controller {
@@ -116,7 +117,7 @@ public class Controller {
         } else {
             c = mathsThings.stringToInteger(cString);
             m = mathsThings.stringToInteger(mString);
-            d = mathsThings.stringToInteger(cString);
+            d = mathsThings.stringToInteger(dString);
             isBigNumber = false;
 
         }
@@ -124,14 +125,15 @@ public class Controller {
         if(isBigNumber){
             EuklidAlgoErweiterter euklidAlgoErweiterter = new EuklidAlgoErweiterter(cBig,mBig);
             try {
-                System.out.println("BECHRENERNENR");
+
                 BigInteger[] results = euklidAlgoErweiterter.calculateEuklidAlgoErweiterter(dBig);
                 BigInteger resultX = results[1];
                 BigInteger resultY = results[2];
 
-                setResultD(dBig.toString());
-                setResultX(resultX.toString());
-                setResultY(resultY.toString());
+                setResultD((dBig.toString()));
+                setResultX((resultX.toString()));
+                setResultY((resultY.toString()));
+
 
             } catch (Exception e) {
                 setResultD("Keine Lösung - BigInteger");
@@ -141,7 +143,7 @@ public class Controller {
         }else{
 
             try {
-               EuklidAlgoErweiterter euklidAlgoErweiterter = new EuklidAlgoErweiterter(m,d);
+               EuklidAlgoErweiterter euklidAlgoErweiterter = new EuklidAlgoErweiterter(c,m);
                 int[] results = euklidAlgoErweiterter.calculateEuklidAlgoErweiterter(d);
                 int resultX = results[1];
                 int resultY = results[2];
